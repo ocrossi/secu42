@@ -1,0 +1,6 @@
+pas de fichier apparent, on utilise la commande :
+find / -user flag00 2>/dev/null
+pour se rendre compte que 2 fichiers peuvent etre lus.
+on cat le fichier /usr/sbin/john, le password semble etre crypte
+un passage sur dcode.fr avec le code cesar nous donne le mdp :
+nottoohardhere

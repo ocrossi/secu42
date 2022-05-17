@@ -1,0 +1,5 @@
+on cat le level04.pl et on se rend compte qu un script perl
+ecoute sur le port 4747. Le but ici est de lui envoyer la commande getflag en http
+en utilisant curl ca donne :
+curl localhost:4747?x=\`getflag\`
+

@@ -1,0 +1,5 @@
+un cat du fichier /etc/passwd nous donne un mdp de la forme "42hDRfypTqqnw"
+le mot de passe ne correspond pas, il doit donc etre crypte
+on utilise le programme john-the-ripper 
+john <(echo "42hDRfypTqqnw") --show,
+mdp pour flag 01 est abcdefg

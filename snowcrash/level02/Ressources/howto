@@ -1,0 +1,9 @@
+on va utiliser wireshark pour lire le fichier pcap present dans le home 
+de level02
+on commence par copier le pcap de ma vm sur mon hote
+scp -P 9999 level02@localhost:/home/user/level02/level02.pcap . !! a voir a l ecole si j dois dl 
+									wireshark sur vm
+puis chmod +r level02.pcap pour droits de lecture
+click droit puis follow tcp stream, on a un password pas encore complet,
+en mettant en mode UTF 8 on peut voir le password complet:
+ft_wandrNDRelL0L
