@@ -1,0 +1,12 @@
+le binaire semble incrementer la chaine de caracteres en argument de l index du caractere dans la chaine
+un ltrace ./level09 test nous donne un "you should not reverse this"
+
+1st step is to copy the c program to VM
+scp -P 9999 ./reversethis.c level09@localhost:/tmp/
+then compile it on vm
+gcc reversetrhis.c
+then we want to cat token in a variable like so
+filecontent=`cat token`
+and finally ./a.out $filecontent
+gives us password
+

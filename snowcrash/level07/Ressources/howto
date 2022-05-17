@@ -1,0 +1,4 @@
+un ltrace ./level07 nous permet de voir un getenv de LOGNAME
+un simple:
+export LOGNAME=\`getflag\`
+

@@ -1,0 +1,9 @@
+apres etude du binaire level08, on se rend compte que ce programme lit
+un fichier qu on lui envoie en parametres, seulement si on a les droits.
+L objectif est de creer un lien symbolique sur token pour contourner les
+droits d access a token, avec la commande : 
+cd /tmp
+ln -s ~/token link
+puis lancer
+~/level08 link
+et on obtient le mod de passe pour flag08

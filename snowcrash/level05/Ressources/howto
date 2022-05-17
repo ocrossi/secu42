@@ -1,0 +1,19 @@
+on peut boir si on se log en ssh direct au level05 qu'on a un nouveau mail,
+sinon utiliser le find du level00 pour trouver le mail, avec un -name level05
+
+un cat du /var/mail/level05 nous donne :
+*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+
+donc cron execute le script au dessus toutes les 2 mn
+on cat ce script, on se rend compte que ce script qui est execute en tant que 
+flag05 execute tout les scripts presents dans le dossier /opt/openarenaserver
+avant de les delete
+
+on va donc mettre dans ce directory un script identique a celui du level03:
+scp -P 9999 ./script.sh level05@localhost:/tmp
+on donne droits d exec
+chmod +x /tmp/script.sh
+on copie le script dans le directory suivant
+cp /tmp/script.sh /opt/openarenaserver
+
+on attend que cron lance le script, puis on recupere le flag dans le fichier /tmp/flag

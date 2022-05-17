@@ -1,0 +1,6 @@
+l objectif ici est d'utiliser la regexp qui finit par /e pour injecter un getflag
+on peut le faire en creant un fichier avec la ligne suivante :
+[x ${`getflag`}]
+qui va remplacer le * par la commande getflag
+on execute ensuite le script level06 avec le fichier fraichement cree
+

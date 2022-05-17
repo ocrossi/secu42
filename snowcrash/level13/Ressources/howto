@@ -1,0 +1,8 @@
+l objectif est de tromper le programme lors d e l execution
+il faut changer la valeur de retour de getuid de 2013 a 4242
+on met un breakpoint apres getuid en utilisant b*[addr]
+puis run
+enfin info registers nous montre que eax contient 2013
+on va changer cette valeur avec 
+set $eax=4242
+puis un autre run nous donne le flag

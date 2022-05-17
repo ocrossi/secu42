@@ -1,0 +1,14 @@
+premierement creer fichier dans /tmp pour analyser le binaire
+un ltrace ./level10 /tmp/test localhost nous apprend 2 choses,
+1 le binaire utilise access (qui a une faille de secu qu on va
+utiliser)
+2 il se connecte au port 6969
+
+on va mettre un listener sur le port 6969 avec nc, en boucle avec
+while [ 1 ]; do nc -l 6969 ; done
+
+on chmod 777 le home
+ensuite on copie script  et script2.sh dans le home:
+scp -P 9999 ./level10/Ressources/script.sh ./level10/Ressources/script2.sh  level10@localhost:~
+
+on lance les 2 scripts et on attend que la fenetre avec les listeners nous donne le mdp pour flag10 
