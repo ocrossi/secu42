@@ -1,0 +1,10 @@
+pas de fichier pour le level14
+
+on va utiliser gdb pour changer l uid de getflag durant l exec
+cette methode peut marcher pour tout les lvs
+
+gdb /bin/getflag
+puis set retour de syscall ptrace a 1
+et enfin mettre retour de setuid a 3014 (uid flag14)
+
+technique marche pr tt les levels 

@@ -1,0 +1,5 @@
+avec objdump -d -M intel level1  on voit une fonction run pas appelee dans le main
+qui envoie le syscall system, mais bon ca ne marche pa avec gdb, je sui toujours lv1 en allant dans run
+
+bufferoverflow
+print(76 * "a")+(\x08\x04\x84\xa0) manque juste la ligne python propre et ca devrait marcher

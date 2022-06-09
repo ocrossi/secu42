@@ -1,0 +1,8 @@
+Dump of assembler code for function main:
+   0x0000000100000fa0 <+0>:	push   rbp
+   0x0000000100000fa1 <+1>:	mov    rbp,rsp
+   0x0000000100000fa4 <+4>:	xor    eax,eax
+   0x0000000100000fa6 <+6>:	mov    DWORD PTR [rbp-0x4],0x0
+   0x0000000100000fad <+13>:	pop    rbp
+   0x0000000100000fae <+14>:	ret    
+End of assembler dump.
