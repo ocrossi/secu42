@@ -1,0 +1,11 @@
+avec only alphabet en single step dans fonction p
+on se rend compte que ebp est ecrase par les T
+et que l ardd 0xbffff6ac est l endroit sur la stack ou on a l adresse du 
+debut du shellcode
+
+donc pr l instant version qui marche = on redirige sur la heap la ou strdup va inserer le res de gets
+on y ajoute shellcode. D ailleurs attention shellcode peut bugger si c est pas correctement alligne en mem
+
+a test, version sauter sur valeur de retour du main
+
+
