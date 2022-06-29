@@ -1,0 +1,12 @@
+## ASM analysis
+
+### function main
+1. <+0-+1>		prepare stack frame for current function, pushes stack base pointer and sets esp to ebp
+2. <+3>			aligns content of esp (useful?)
+3. <+6>			allocates 32 bytes for main stackframe
+4. <+9-+17> 	sets eax to prepare atoi
+5. <+20> 		launches atoi with eax as 1st param
+6. <+25-+30>	compares res of atoi to 0x1a7 (423), jumps to end of main if res of atoi differs from 423
+7. <+32-+152> 	launches execve with /bin/bash (geteuid, getegid, then sets resgid and resuid to give perms to current prgm)
+8. <+152-184> 	if input differs from 423, just prints "No !" (<164-184> preps write parameters)
+

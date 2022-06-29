@@ -1,0 +1,22 @@
+##ASM analysis
+
+### function main
+<+0-+1>		prepares stack frame for current function
+<+3>		binary alignment
+<+6>		allocates 0x50 (80 bytes) for current stackframe
+??<+9>		eax points to esp+0x10
+<+13> 		prepares eax for gets (sets it to beginning of user input?)
+<+16>		calls gets function (has security flaw)
+<+21-+22>	clears stackframe
+
+### function run
+<+0-+1>		prepares stack frame for current function
+<+3>		allocates 0x18 (24 bytes) for current stackframe
+??<+6>		puts eax content into data segement at addr 0x80497c0
+<+11>		edx equals eax
+??<+13>		eax equals value at addr 0x8048570
+<+18-+38>	prepares arguments for call to fwrite
+<+41>		call to fwrite
+<+46>		prepares argument for call to system
+<+53>		call to system
+<+58-+59>	clears stack frame

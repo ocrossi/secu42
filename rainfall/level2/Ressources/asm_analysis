@@ -1,0 +1,15 @@
+##ASM analysis
+
+### function main
+<+0-+1>			prepares stack frame for current function
+<+3>			binary alignment
+<+6>			call to p without params
+<+11-+12>		clear stackframe
+
+### function p
+<+0-+1>			prepares stack frame for current function
+<+3>			allocates 104 bytes for current stackframe
+<+6>			sets eax to 0x8049860, ds can be ignored on modern x86 cpus (
+<+11>			preps 1st arg for fflush
+<+14>			call to fflush
+<+
