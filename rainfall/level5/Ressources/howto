@@ -1,0 +1,15 @@
+this level is a format string vulnerability like level 3 and 4, but with the
+goal to rewrite a global offset table value to smash the return of exit function
+to the o function.
+
+1st we have to define which param we control in the vulnerable printf: 4th param
+then we need 2 adresses: address of jump value to exit function in got and adress of
+the function we want to go to
+
+then we need to perform a printf wiht %n and write number of chars to match the address of
+the function we want to go to
+
+little trick there, to write this address we perform 2 writes instead of one, to avoid printing
+over 134 millions chars to screen. the werite of the 2 most significant bytes is a bit tricky,
+it depends on the 2 less significant bytes of the previous 4 bytes group. Some hex arithmetic
+can solve this problem easily

