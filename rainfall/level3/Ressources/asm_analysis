@@ -6,16 +6,18 @@ Dump of assembler code for function main:
    0x0804851a <+0>:	push   ebp
    0x0804851b <+1>:	mov    ebp,esp
    0x0804851d <+3>:	and    esp,0xfffffff0
+   `
+   preps main stack frame
+   binary alignment but no simd
+   `
    0x08048520 <+6>:	call   0x80484a4 <v>
    0x08048525 <+11>:	leave
    0x08048526 <+12>:	ret
+   `
+   call to v and clear main stackframe
+   `
 End of assembler dump.
 `
-
-<0-1>			preps main stackframe
-<3>			aligns esp in mem (useless no simd instr)
-<6>			call to function v (push eip to stack and jumpto 1st v instruction)
-<11-12>			clears main stackframe
 
 ### function v
 `
@@ -23,7 +25,13 @@ Dump of assembler code for function v:
    0x080484a4 <+0>:	push   ebp
    0x080484a5 <+1>:	mov    ebp,esp
    0x080484a7 <+3>:	sub    esp,0x218
+   `
+   preps main stackframe and allocates 536 bytes for current stackframe
+   `
    0x080484ad <+9>:	mov    eax,ds:0x8049860
+   `
+   loads whateveer is at addr 0x8049860 into eax
+   `
    0x080484b2 <+14>:	mov    DWORD PTR [esp+0x8],eax
    0x080484b6 <+18>:	mov    DWORD PTR [esp+0x4],0x200
    0x080484be <+26>:	lea    eax,[ebp-0x208]

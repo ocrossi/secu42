@@ -1,9 +1,18 @@
 ## Exploit type: buffer overflow to redirect code exec
 
-with objdump -d -M intel level1  we see run function pas not called by main
-run has call to system, which is syscall to launch command. That should get us
-to next lv. What we have to do is to overwrite return adress of gets in main
-to go to run
+in gdb
+info function gives us the address of run function
+
+then classic bufferoverflow where we override gets return address on stack
+with run address to redirect code execution
+1st calculate offset, here 76, then add to a 76 char padding the address
+of run function with bytes in reverse order to respect endianness
+We see the "Good... Wait what?" and a whoami indicates we changed user
+
+Last thing, since level1 reads on stdin, we have to do a sort of trick to keep
+level1 running, else the program would stop immediately.
+So put exploit in file then cat file - | ./level1 to keep lv1 from shutting down
+
 
 
 echo $(python -c 'print 76 * "A" + "\x44\x84\x04\x08"') > /tmp/exploit !! be carefull endianness

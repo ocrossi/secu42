@@ -64,14 +64,3 @@ End of assembler dump.
 `
 clears run stackframe
 
------------------------------------------------------------------------------------
-<+0-+1>		prepares stack frame for current function
-<+3>		allocates 0x18 (24 bytes) for current stackframe
-??<+6>		puts eax content into data segement at addr 0x80497c0
-<+11>		edx equals eax
-??<+13>		eax equals value at addr 0x8048570
-<+18-+38>	prepares arguments for call to fwrite
-<+41>		call to fwrite
-<+46>		prepares argument for call to system
-<+53>		call to system
-<+58-+59>	clears stack frame
