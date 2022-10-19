@@ -1,3 +1,6 @@
+## Exploit type : format string exploit to override imnstruction pointer on stack,
+					so redirecting code exec
+
 this level is a format string vulnerability like level 3 and 4, but with the
 goal to rewrite a global offset table value to smash the return of exit function
 to the o function.

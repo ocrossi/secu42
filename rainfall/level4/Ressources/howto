@@ -1,3 +1,9 @@
-meme pb que pour le level3
+## Exploit type: Format string exploit to modify variable value
 
-objectif est de print 
+kindof the same thing as previous level, except there is a restriction in fgets,
+we cant print more than 512 chars. We can use a trick of printf format type to print
+characters with printf without typing them all into standard input
+
+BUT, we can do an other quite neat trick to avoir printing 0x1025544 chars,
+what we can do is to try do two writes with printf with writing 2 upper bytes
+and 2 lower bytes of the required variable. Check exploit.py

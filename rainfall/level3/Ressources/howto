@@ -1,8 +1,28 @@
-echo AAAA$(python -c 'print "%08x."*20')
+##Exploit type: format string vulnerability to set a variable value
 
-echo $(python -c "print '\x8c\x98\x04\x08' + 'a' * 60 + '%4\$n'") change la data a l adresse en 1e position par le nb de caracteres imprimes par pf
 
-donc on veut imprimer 64 chars puis mettre 64 dans la case memoire de la var comparee
-d abord on regarde avec %x.%x jusqu a tomber sur la case memoire qu on controle
+The purpose of this level is to override vale of global variable m
+to enter a if that will give us the password for next lv
 
-ca donne 1 addresse 2 nb de chars a mettre 3 ecrire dans la case memoire qu on controle la valeur demandee
+
+It works in 2 steps. 1st check which parameter of printf we
+control. we input AAAA%x%x.... until we find our As on stack.
+The thing is printf doesnt know what to print since it is
+user input, so we load user input with a bunch of %x to print
+stack as hex.
+
+--> echo AAAA$(python -c 'print "%08x."*20'), we control 4th printf param
+
+2nd step is overriding value on stack thanks to %n that writes
+the number of chars written to a given address.
+
+The if we want to enter to is ok if the global variable m equals
+64, so we should print address we want 1st (address of m), then 60 chars
+and end by %[num_arg_controlled]$n (dollar says we go straight to 4th param)
+
+--> echo $(python -c "print '\x8c\x98\x04\x08' + 'A' * 60 + '%4\$n'") > file
+		here care escape the dollar esle it wouldnt be printed as such
+
+	and finally 
+		cat file - | ./level3
+

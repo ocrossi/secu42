@@ -30,19 +30,29 @@ Dump of assembler code for function v:
    `
    0x080484ad <+9>:	mov    eax,ds:0x8049860
    `
-   loads whateveer is at addr 0x8049860 into eax
+   loads whatever is at addr 0x8049860 into eax
    `
    0x080484b2 <+14>:	mov    DWORD PTR [esp+0x8],eax
    0x080484b6 <+18>:	mov    DWORD PTR [esp+0x4],0x200
    0x080484be <+26>:	lea    eax,[ebp-0x208]
    0x080484c4 <+32>:	mov    DWORD PTR [esp],eax
    0x080484c7 <+35>:	call   0x80483a0 <fgets@plt>
+   `
+   preps argument for fgets in reverse order then call fgets
+   `
    0x080484cc <+40>:	lea    eax,[ebp-0x208]
    0x080484d2 <+46>:	mov    DWORD PTR [esp],eax
    0x080484d5 <+49>:	call   0x8048390 <printf@plt>
+   `
+   same here, preps arg of printf and calls printf
+   `
    0x080484da <+54>:	mov    eax,ds:0x804988c
    0x080484df <+59>:	cmp    eax,0x40
    0x080484e2 <+62>:	jne    0x8048518 <v+116>
+   `
+   moves value of global variable m into eax then comps
+   to 0x40 (int 64) and jumps to main + 116 bytes if comp fails
+   `
    0x080484e4 <+64>:	mov    eax,ds:0x8049880
    0x080484e9 <+69>:	mov    edx,eax
    0x080484eb <+71>:	mov    eax,0x8048600
@@ -53,20 +63,13 @@ Dump of assembler code for function v:
    0x08048507 <+99>:	call   0x80483b0 <fwrite@plt>
    0x0804850c <+104>:	mov    DWORD PTR [esp],0x804860d
    0x08048513 <+111>:	call   0x80483c0 <system@plt>
+   `
+   fwrite whait what and then call to system("/bin/sh")
+   `
    0x08048518 <+116>:	leave
    0x08048519 <+117>:	ret
+   `
+   clear v stavkframe jumps back to main
+   `
 End of assembler dump.
 `
-
-<0-1>			preps v stackframe
-<3>			allocs 536 bytes for curr stackframe
-<9>			moves what is at addr 0x8049860 into eax
-<14-32>			preps 3 args of fgets
-<35>			call to fgets
-<40>			store addr where is located 1st arg of fgets in eax
-<46>			store eax content at value pointed by esp
-<49>			call to printf
-<54>			stores what is at addr  0x804988c in eax
-<59-62>			if eax != 64, jump to line 116 (directly to return)
-<64-111>		else write whait what and call new shell with owner rights  (suid)
-
