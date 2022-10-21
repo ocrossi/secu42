@@ -1,0 +1,18 @@
+## Exploit type : use after free
+
+we have a program with 4 ifs where we can enter commands in standard input
+auth
+login
+service
+
+there is a problem in size of variables on stack. service auth and login except pointers,
+and we can input a service that overflows on stack causing control variables to not be 0
+anymore and skip authentication
+
+so ./level8
+auth admin
+service AAAAAAAAAAAAAAAAAAAAAAAA
+login
+
+we in
+as i understood overflow on service expecting a pointer allows us to login with password

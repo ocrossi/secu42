@@ -1,0 +1,11 @@
+## Exploit type : 	heap overflow with strcpy fixed allocated size and standard
+					input no limited size
+
+info functions, interesting n function but never called.
+we can see that strcpy prints the stdin and 72 bytes farther there is an address
+to go back to m
+it is the assignation of m to the 1st element of the 2nd malloc. we can take control of this pointer 
+by inputing a big string in standard input and at the end putting n address to redirect code exec
+see in gdb to print heap after call to strcpy
+
+then classic buffer overflow type of input, we pad 72 chars + the address of n, that will override the assignation to m and when this pointer is called at the end of main, we succeed

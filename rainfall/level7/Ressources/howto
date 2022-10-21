@@ -1,0 +1,22 @@
+##Exploit type : heap overflow with unprotected strcpy
+
+1st program empty args or 1 segfault
+program with 2 or more args no segfault
+but program with arg1 > 20 segfaults
+
+if we check the state of heap after every malloc and strcpy in gdb with aaaa and bbbb as 1st and 2nd arg 
+we can see 1st arg at 0x804a018
+0x0804a038 20 bytes further, which is a pointer to a place of heap where there is 2nd arg
+so the idea is that the use of the heap by the dev allows attackers to overflow the 
+1st strcpy to override the dest adress of 2nd strcpy. Then 2nd strcpy will write what
+ever we want where we want
+We can override puts GOT entry to redirect code exec and call function m instead of
+puts 
++ nice trick learned, to input directly exploits in gdb as prgm args 
+av = "`/bin/echo "aabb\x10\x20"`" very nice
+
+it gives us in the end
+1st arg 20 padding + address of jmp in put GOT (we disas address of puts call in mainthen jump appears to some adress in ds segment, this is the address we want for dest of 2nd strcpy)
+2nd arg is address of the function we want to redirect execution to
+
+see exploit file
