@@ -1,0 +1,9 @@
+looks like we can put some data on heap, the cool thing would be to override
+the pointer called at the end of main towards heap, there we would place a
+shellcode and we win
+
+we can see that 1st arg of program segfaults with more than 108 chars
+which is a size for new N instances we can find back in asm
+
+mmmh for some reason the nop slide stops prgm exec so the shellcode doesnt get exec
+see scipt.py vs script2.py. it works in gdb though, weird
