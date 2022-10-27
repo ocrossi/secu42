@@ -1,0 +1,18 @@
+seems like a buffer overflow with 2 separate inputs
+i cant segfault if at least input size 1 20 and input2
+16 chars.
+we acn take control of the eip of main to redirect prgm exec into
+a shellcode we would place on stack
+
+last thing is to determine how exactly the 2 inputs are processed 
+by the program
+
+we can see whatever the length of 1st arg only 20 chars are copied 
+(and same for 2nd one?)
+
+the exploit should look like 
+
+[shellcode] 	[padding] 	[address to beginning of shellcode]
+21		15		4
+
+nono the cutting doesnt work
