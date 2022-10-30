@@ -1,0 +1,11 @@
+looked like it was so simple buffer overflow,
+1st param negative would overflow in main and
+memcpy something really big
+or we could learn how to do short jump to pass
+the 4bytes pack containing eip adress and voila
+could we modify shellcode like bosses?
+operation short jump would work, we have to get eip
+at last instruction, add size of instruction to short jump
++ padding
+
+like EB 4 car eip se situe a la fin de jump

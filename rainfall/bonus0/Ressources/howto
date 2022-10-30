@@ -15,4 +15,12 @@ the exploit should look like
 [shellcode] 	[padding] 	[address to beginning of shellcode]
 21		15		4
 
-nono the cutting doesnt work
+doesnt work on main stack cause space boring in between
+we can try using main saved eip to jump onto the read part
+plus address is offset +9 beginning 2nd  arg
+
+so nop slide, shellcode 1st arg
+2nd arg is 9 bytes addr shellcode and 7 more bytes
+ + for some reason offset mini is beginning of shellcode + 64
+
+this level was so boring to debug
