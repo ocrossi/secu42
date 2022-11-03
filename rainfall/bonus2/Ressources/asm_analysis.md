@@ -215,11 +215,17 @@ Dump of assembler code for function greetuser:
    0x08048501 <+125>:	movzx  edx,WORD PTR [edx+0xc]
    0x08048505 <+129>:	mov    WORD PTR [eax+0xc],dx
    0x08048509 <+133>:	nop
+   `
+   end of ifs 
+   `
    0x0804850a <+134>:	lea    eax,[ebp+0x8]
    0x0804850d <+137>:	mov    DWORD PTR [esp+0x4],eax
    0x08048511 <+141>:	lea    eax,[ebp-0x48]
    0x08048514 <+144>:	mov    DWORD PTR [esp],eax
    0x08048517 <+147>:	call   0x8048370 <strcat@plt>
+   `
+   strcat 1st arg and
+   `
    0x0804851c <+152>:	lea    eax,[ebp-0x48]
    0x0804851f <+155>:	mov    DWORD PTR [esp],eax
    0x08048522 <+158>:	call   0x8048390 <puts@plt>
@@ -227,6 +233,4 @@ Dump of assembler code for function greetuser:
    0x08048528 <+164>:	ret
 End of assembler dump.
 `
-
 well greetings of different languagres get cat and printed on screen
-
