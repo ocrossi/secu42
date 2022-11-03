@@ -11,15 +11,16 @@ Dump of assembler code for function main:
    0x0804852f <+6>:	and    esp,0xfffffff0
    0x08048532 <+9>:	sub    esp,0xa0
    `
-   lots of variables and 160 bytes for current stackframe
+   classic beginning, lots of regs pushed onto stack we expect lots of variables
+   160 byts for current stackframe
    `
    0x08048538 <+15>:	cmp    DWORD PTR [ebp+0x8],0x3
    0x0804853c <+19>:	je     0x8048548 <main+31>
    0x0804853e <+21>:	mov    eax,0x1
    0x08048543 <+26>:	jmp    0x8048630 <main+263>
-   `
-   if argc < 2 return
-   `
+	`
+	if ac != 3, return, else continue
+	`
    0x08048548 <+31>:	lea    ebx,[esp+0x50]
    0x0804854c <+35>:	mov    eax,0x0
    0x08048551 <+40>:	mov    edx,0x13
@@ -41,7 +42,7 @@ Dump of assembler code for function main:
    0x08048574 <+75>:	mov    DWORD PTR [esp],eax
    0x08048577 <+78>:	call   0x80483c0 <strncpy@plt>
    `
-   strncpy with pointer to beginning of 0 array, av[1], 0x28 (int 40)
+   call to strncpy(some ptr on stack, av[1], 40)
    `
    0x0804857c <+83>:	mov    eax,DWORD PTR [ebp+0xc]
    0x0804857f <+86>:	add    eax,0x8
@@ -67,6 +68,7 @@ Dump of assembler code for function main:
    `
    if lang == NUll return
    `
+   2nd call to strncpy
    0x080485bc <+147>:	mov    DWORD PTR [esp+0x8],0x2
    0x080485c4 <+155>:	mov    DWORD PTR [esp+0x4],0x804873d
    0x080485cc <+163>:	mov    eax,DWORD PTR [esp+0x9c]
@@ -103,6 +105,10 @@ Dump of assembler code for function main:
    `
    move 2 in language var at ds:0x8049988 and jump
    `
+   0x0804860a <+225>:	test   eax,eax
+   0x0804860c <+227>:	jne    0x8048618 <main+239>
+   0x0804860e <+229>:	mov    DWORD PTR ds:0x8049988,0x2
+   0x08048618 <+239>:	mov    edx,esp
    0x0804861a <+241>:	lea    ebx,[esp+0x50]
    0x0804861e <+245>:	mov    eax,0x13
    0x08048623 <+250>:	mov    edi,edx
@@ -116,6 +122,8 @@ Dump of assembler code for function main:
    `
    call to greetuser
    `
+   0x08048629 <+256>:	rep movs DWORD PTR es:[edi],DWORD PTR ds:[esi]
+   0x0804862b <+258>:	call   0x8048484 <greetuser>
    0x08048630 <+263>:	lea    esp,[ebp-0xc]
    0x08048633 <+266>:	pop    ebx
    0x08048634 <+267>:	pop    esi
@@ -125,7 +133,8 @@ Dump of assembler code for function main:
 End of assembler dump.
 `
 
-## function greetuser
+## FUNCTION GREETUSER
+
 `
 Dump of assembler code for function greetuser:
    0x08048484 <+0>:	push   ebp

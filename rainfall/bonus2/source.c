@@ -1,4 +1,5 @@
 #include <string.h>
+<<<<<<< HEAD
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -32,4 +33,9 @@ void main(int ac, char **av) {
 	memcpy(p, "en_US.UTF-8", 0x13);
 	greetuser();
 	return;
+=======
+
+void main(int ac, char **av) {
+	
+>>>>>>> 5308bcce0b54736591b4d54e8dea22324ec6dab8
 }
