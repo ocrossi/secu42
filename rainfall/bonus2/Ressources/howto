@@ -1,0 +1,6 @@
+sooo
+
+we have some env language var from terminal  that will change if nl or fi
+we have a bufferoverflow with 40 A 40 bs before call to greetuser.
+eip seems to be overwritten wit 2 bs just after memcpy in call to greetuser
+

@@ -8,4 +8,16 @@ operation short jump would work, we have to get eip
 at last instruction, add size of instruction to short jump
 + padding
 
-like EB 4 car eip se situe a la fin de jump
+like EB 4 car eip se situe a la fin de jump, to try for prev lv
+
+
+in the end there is in the code a call to bin/sh
+the purpose of the level is to pass in the wanted if by rewritting a value on stack
+problem we need 44 bytes of input to override the value we want
+we can overflow with close to min int to get the value we want
+since the pprgm multiplies value by 4 
+so with min int we see ecx at 4 in the call to memcpy
+by fiddling around a little we can get with input 1 as -2147483637
+ecx            0x2c	44
+we have room, now 2nd arg should be 40 padding plus value we want
+
