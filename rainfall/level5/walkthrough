@@ -1,4 +1,4 @@
-## Exploit type : format string exploit to override imnstruction pointer on stack,
+## Exploit type : format string exploit to override instruction pointer on stack,
 					so redirecting code exec
 
 this level is a format string vulnerability like level 3 and 4, but with the
@@ -13,6 +13,6 @@ then we need to perform a printf wiht %n and write number of chars to match the 
 the function we want to go to
 
 little trick there, to write this address we perform 2 writes instead of one, to avoid printing
-over 134 millions chars to screen. the werite of the 2 most significant bytes is a bit tricky,
+over 134 millions chars to screen. the write of the 2 most significant bytes is a bit tricky,
 it depends on the 2 less significant bytes of the previous 4 bytes group. Some hex arithmetic
 can solve this problem easily

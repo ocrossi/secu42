@@ -9,42 +9,74 @@ Dump of assembler code for function main:
    0x08048568 <+4>:	push   esi
    0x08048569 <+5>:	and    esp,0xfffffff0
    0x0804856c <+8>:	sub    esp,0xa0
+	 `
+		160 bytes for current stackframe
+	 `
    0x08048572 <+14>:	jmp    0x8048575 <main+17>
    0x08048574 <+16>:	nop
+	 `
+	 ??
+	 `
    0x08048575 <+17>:	mov    ecx,DWORD PTR ds:0x8049ab0
    0x0804857b <+23>:	mov    edx,DWORD PTR ds:0x8049aac
    0x08048581 <+29>:	mov    eax,0x8048810
+	 `
+	 ecx -> service
+	 edx -> auth
+	 eax -> %p, %p \n"
+	 `
    0x08048586 <+34>:	mov    DWORD PTR [esp+0x8],ecx
    0x0804858a <+38>:	mov    DWORD PTR [esp+0x4],edx
    0x0804858e <+42>:	mov    DWORD PTR [esp],eax
    0x08048591 <+45>:	call   0x8048410 <printf@plt>
+	 `
+	 printf("%p, %p \n", auth, service)
+	 `
    0x08048596 <+50>:	mov    eax,ds:0x8049a80
    0x0804859b <+55>:	mov    DWORD PTR [esp+0x8],eax
    0x0804859f <+59>:	mov    DWORD PTR [esp+0x4],0x80
    0x080485a7 <+67>:	lea    eax,[esp+0x20]
    0x080485ab <+71>:	mov    DWORD PTR [esp],eax
    0x080485ae <+74>:	call   0x8048440 <fgets@plt>
+	 `
+	 fgets (some_var, 0x80, stdin)
+	 `
    0x080485b3 <+79>:	test   eax,eax
    0x080485b5 <+81>:	je     0x804872c <main+456>
+	 `go straight to return if eax 0`
    0x080485bb <+87>:	lea    eax,[esp+0x20]
    0x080485bf <+91>:	mov    edx,eax
+	 `eax set to what is read on stdin by fgets, then res moved into eax`
    0x080485c1 <+93>:	mov    eax,0x8048819
+	 `"auth "`
    0x080485c6 <+98>:	mov    ecx,0x5
    0x080485cb <+103>:	mov    esi,edx
    0x080485cd <+105>:	mov    edi,eax
    0x080485cf <+107>:	repz cmps BYTE PTR ds:[esi],BYTE PTR es:[edi]
-   0x080485d1 <+109>:	seta   dl
+	 0x080485d1 <+109>:	seta   dl
    0x080485d4 <+112>:	setb   al
+	 `
+	compares esi and edi and sets dl and al 
+	 `
    0x080485d7 <+115>:	mov    ecx,edx
    0x080485d9 <+117>:	sub    cl,al
    0x080485db <+119>:	mov    eax,ecx
    0x080485dd <+121>:	movsx  eax,al
    0x080485e0 <+124>:	test   eax,eax
    0x080485e2 <+126>:	jne    0x8048642 <main+222>
+	 `
+	 do some setting on al and cl + if case
+	 `
    0x080485e4 <+128>:	mov    DWORD PTR [esp],0x4
    0x080485eb <+135>:	call   0x8048470 <malloc@plt>
+	 `
+	 inside the iff malloc(4)
+	 `
    0x080485f0 <+140>:	mov    ds:0x8049aac,eax
    0x080485f5 <+145>:	mov    eax,ds:0x8049aac
+	 `
+	 move res of malloc in auth variable
+	 `
    0x080485fa <+150>:	mov    DWORD PTR [eax],0x0
    0x08048600 <+156>:	lea    eax,[esp+0x20]
    0x08048604 <+160>:	add    eax,0x5
@@ -52,7 +84,7 @@ Dump of assembler code for function main:
    0x0804860f <+171>:	mov    edx,eax
    0x08048611 <+173>:	mov    eax,0x0
    0x08048616 <+178>:	mov    ecx,DWORD PTR [esp+0x1c]
-      0x0804861a <+182>:	mov    edi,edx
+   0x0804861a <+182>:	mov    edi,edx
    0x0804861c <+184>:	repnz scas al,BYTE PTR es:[edi]
    0x0804861e <+186>:	mov    eax,ecx
    0x08048620 <+188>:	not    eax
@@ -102,7 +134,7 @@ Dump of assembler code for function main:
    0x080486a5 <+321>:	add    eax,0x7
    0x080486a8 <+324>:	mov    DWORD PTR [esp],eax
    0x080486ab <+327>:	call   0x8048430 <strdup@plt>
-      0x080486b0 <+332>:	mov    ds:0x8049ab0,eax
+   0x080486b0 <+332>:	mov    ds:0x8049ab0,eax
    0x080486b5 <+337>:	lea    eax,[esp+0x20]
    0x080486b9 <+341>:	mov    edx,eax
    0x080486bb <+343>:	mov    eax,0x804882d

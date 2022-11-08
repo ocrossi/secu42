@@ -24,15 +24,7 @@ Dump of assembler code for function main:
    0x08048496 <+22>:	ret
 End of assembler dump.
 `
-	clears  main stackframe and exits
------------------------------------------------------------------------------------
-<+0-+1>		prepares stack frame for current function
-<+3>		binary alignment
-<+6>		allocates 0x50 (80 bytes) for current stackframe
-??<+9>		eax points to esp+0x10
-<+13> 		prepares eax for gets (sets it to beginning of user input?)
-<+16>		calls gets function (has security flaw)
-<+21-+22>	clears stackframe
+clears  main stackframe and exits
 
 ### function run
 `
