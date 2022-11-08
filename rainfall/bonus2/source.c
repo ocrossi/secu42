@@ -9,7 +9,8 @@ int language = 0;
 void greetuser(lang) {
 	char *s;
 	
- 	if (language == 1)	
+ 	if (language == 1)
+		s = 
  	if (language == 2)
 	else
  	strcat(s, lang);

@@ -37,7 +37,7 @@ Dump of assembler code for function main:
    0x0804855f <+54>:	add    eax,0x4
    0x08048562 <+57>:	mov    eax,DWORD PTR [eax]
    0x08048564 <+59>:	mov    DWORD PTR [esp+0x8],0x28
-   0x0804856c <+67>:	mov    DWORD PTR [esp+0x4],eax
+   0x0804856c <+67>:	mov    DWORD PTR [esp+0x4],eax0x08048630
    0x08048570 <+71>:	lea    eax,[esp+0x50]
    0x08048574 <+75>:	mov    DWORD PTR [esp],eax
    0x08048577 <+78>:	call   0x80483c0 <strncpy@plt>
@@ -203,11 +203,18 @@ Dump of assembler code for function greetuser:
    0x080484e7 <+99>:	jmp    0x804850a <greetuser+134>
    0x080484e9 <+101>:	mov    edx,0x804872a
    `
-   Goedemiddag
+   Goedemiddag, --- this is the part we want to use
    `
    0x080484ee <+106>:	lea    eax,[ebp-0x48]
+   `
+   get lang 
+   `
    0x080484f1 <+109>:	mov    ecx,DWORD PTR [edx]
    0x080484f3 <+111>:	mov    DWORD PTR [eax],ecx
+   `
+   get the greeting in ecx
+   and into whats pointed by eax
+   `
    0x080484f5 <+113>:	mov    ecx,DWORD PTR [edx+0x4]
    0x080484f8 <+116>:	mov    DWORD PTR [eax+0x4],ecx
    0x080484fb <+119>:	mov    ecx,DWORD PTR [edx+0x8]
@@ -224,11 +231,14 @@ Dump of assembler code for function greetuser:
    0x08048514 <+144>:	mov    DWORD PTR [esp],eax
    0x08048517 <+147>:	call   0x8048370 <strcat@plt>
    `
-   strcat 1st arg and
+   strcat 1st arg and greeting
    `
    0x0804851c <+152>:	lea    eax,[ebp-0x48]
    0x0804851f <+155>:	mov    DWORD PTR [esp],eax
    0x08048522 <+158>:	call   0x8048390 <puts@plt>
+   `
+   puts res of concat + 32 chars from av[2]
+   `
    0x08048527 <+163>:	leave
    0x08048528 <+164>:	ret
 End of assembler dump.
