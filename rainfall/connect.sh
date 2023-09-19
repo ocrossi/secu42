@@ -1,6 +1,7 @@
 #!/bin/bash
 
-pn=8888
+pn=4242
+ip=192.168.1.31
 
 echo "enter level number, ranging from 0 to 13 - 10 to 13 = bonus0 to bonus3"
 read input
@@ -26,6 +27,6 @@ fi
 
 pass=`sed "${num}q;d" ./pass`
 
-sshpass -p $pass ssh $level@localhost -p $pn "chmod 777 ."
-sshpass -p $pass scp -P $pn ./gdbinit  $level@localhost:/home/user/$level/.gdbinit
-sshpass -p $pass ssh $level@localhost -p $pn
+sshpass -p $pass ssh $level@$ip -p $pn "chmod 777 ."
+sshpass -p $pass scp -P $pn ./gdbinit  $level@$ip:/home/user/$level/.gdbinit
+sshpass -p $pass ssh $level@$ip -p $pn
