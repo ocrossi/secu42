@@ -1,14 +1,30 @@
-class N {
-	char annotation
+cass N {
+	public:
+	char annotation;
+	void *p;
+	int num;
+	 
 	
-	
+	N(int i) {
+		size_t len = strlen(this.s);
 
-	void setAnnotation(void *p, char *s) {
-		size_t len;
-		
-		len = strlen(s);
-		memcpy(p + 4, s, len);
+		memcpy(this + 4, s, len)
+	}
+
+
+	void setAnnotation(char *s) {
+		size_t len = strlen(s);
+
+		memcpy(this + 4, s, len);
 		return;
+	}
+
+	int N::operator+(N *c2) {
+		return (this.num + c2.num)
+	}
+
+	int N::operator-(N *c2) {
+		return (this.num - c2.num)
 	}
 }
 

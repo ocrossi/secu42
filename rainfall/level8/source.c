@@ -4,20 +4,23 @@
 
 void *auth;
 void *service;
+// void *reset;
+// void *login;
+//
 
 int main(void) {
-	char *var;
-	int *res;
+	char buf[128]
 
 	while (1) {
-		service = NULL;
-		auth = NULL;
 		printf("%p, %p \n", auth, service);	
-		res = fgets(var, 0x80, stdin);
-		if (res == 0)
+		if (fgets(buff, 128, STDIN) == 0)
 			return (0);
-		if ()
-		malloc(4);
+		// v1 = 5;
+		// s = "auth ";
+
+		if (strncmp("auth ", buffer, 5) == 0) {
+			malloc(4);
+		}
 	}			
 	return (0);
 }
