@@ -9,11 +9,14 @@ int language = 0;
 void greetuser(lang) {
 	char *s;
 	
- 	if (language == 1)
-		s = 
- 	if (language == 2)
-	else
- 	strcat(s, lang);
+ 	if (language == 0)
+		s = "Hello "; 
+	else if (language == 2) {
+		s = "Goedemiddag! "
+	} else if (language  == 1) {
+		s = "Hyvää päivää "
+	}
+	strcat(s, lang);
 	puts(s);
 	return;	 
 }
@@ -23,12 +26,12 @@ void main(int ac, char **av) {
 	char *tlang;
 	int res;
 
-	if (ac < 2)
+	if (ac != 2)
 		return ;
-	memset(p ,0, 0x19);
-	strncpy(p, av[1], 0x28);
-	strncpy((((char *)p) + 40), av[1], 0x20);
-	tlang = gentenv("LANG");
+	memset(p ,0, 19);
+	strncpy(p, av[1], 40);
+	strncpy((((char *)p) + 40), av[1], 32);
+	tlang = getenv("LANG");
 	if (tlang ==  NULL)
 		return;
 	res = memcmp(tlang, "fi", 2);

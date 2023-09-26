@@ -1,7 +1,6 @@
 cass N {
 	public:
-	char annotation;
-	void *p;
+	char annotation[100];
 	int num;
 	 
 	
