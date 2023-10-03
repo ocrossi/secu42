@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pn=4242
-ip=10.14.200.193
+ip=10.12.200.86
 
 echo "enter level number, ranging from 0 to 13 - 10 to 13 = bonus0 to bonus3"
 read input
